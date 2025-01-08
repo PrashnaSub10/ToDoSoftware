@@ -1,0 +1,239 @@
+/* Basic styling for the body */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling for the container */
+.container {
+  max-width: 100%;
+  margin-top: 50px;
+}
+
+/* Card styling */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Header styling */
+.card-header {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Task input and buttons styling */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+button {
+  border-radius: 5px;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button styling */
+button {
+  padding: 10px 15px;
+  font-size: 0.875rem;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+button:hover {
+  background-color: #218838;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #1e7e34;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: scale(0.98);
+}
+
+/* Task List Styling */
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  padding: 15px;
+  transition: background-color 0.15s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
+/* Task text and due details */
+.list-group-item div:first-child {
+  flex: 1;
+  min-width: 200px; /* Ensure minimum width for the text section */
+  margin-right: 15px; /* Spacing between text and buttons */
+}
+
+/* Task actions (buttons) */
+.list-group-item div:last-child {
+  display: flex;
+  flex-wrap: wrap; /* Wrap buttons on smaller screens */
+  gap: 10px; /* Add spacing between buttons */
+}
+
+/* Buttons in the task list */
+.list-group-item button {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Completed tasks */
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .col-6 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .col-12 {
+    width: 100%;
+  }
+
+  .btn {
+    padding: 12px 0;
+  }
+
+  .list-group-item {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start;
+  }
+
+  .list-group-item div:first-child {
+    margin-right: 0; /* Remove margin on smaller screens */
+    margin-bottom: 10px; /* Add spacing below text */
+  }
+
+  .list-group-item div:last-child {
+    justify-content: flex-start; /* Align buttons to the left */
+  }
+
+  .list-group-item button {
+    width: 100%; /* Buttons take full width */
+    text-align: center;
+  }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .col-md-3 {
+    width: 48%;
+    margin-bottom: 10px;
+  }
+
+  .col-md-2 {
+    width: 48%;
+    margin-bottom: 10px;
+  }
+}
+
+/* For large screens (desktops and larger) */
+@media (min-width: 993px) {
+  .col-md-3 {
+    width: 24%;
+  }
+
+  .col-md-2 {
+    width: 24%;
+  }
+}
+
+/* Smooth transitions for hover effects */
+button,
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+/* Animation container */
+.heart-animation-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* SVG heart styling */
+.heart-svg {
+  width: 100px;
+  height: 100px;
+  overflow: visible;
+}
+
+/* Heart path animation */
+.heart-path {
+  stroke-dasharray: 300; /* Length of the path */
+  stroke-dashoffset: 300;
+  animation: drawHeart 1.5s ease-in-out forwards;
+}
+
+/* Firework effect */
+.firework {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff1493, rgba(255, 20, 147, 0.2));
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  animation: burst 0.8s ease-out forwards 1.6s; /* Start after the heart is drawn */
+}
+
+/* Heart drawing animation */
+@keyframes drawHeart {
+  0% {
+    stroke-dashoffset: 300;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Firework burst animation */
+@keyframes burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+
